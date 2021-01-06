@@ -1,0 +1,7 @@
+/.emacs.d/auto*
+/.emacs.d/elpa
+/.emacs.d/config.el
+/.emacs.d/custom.el
+/.emacs.d/recentf
+/.emacs.d/transient
+/.emacs.d/cnfonts
