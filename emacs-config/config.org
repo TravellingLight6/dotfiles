@@ -73,6 +73,59 @@
     :config
     (global-hungry-delete-mode))
 #+END_SRC
+* lang
+** c++
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (use-package irony
+    :config
+    (add-hook 'c++-mode-hook 'irony-mode)
+    (add-hook 'c-mode-hook 'irony-mode)
+    (add-hook 'objc-mode-hook 'irony-mode)
+
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+  (use-package clang-format+
+    :config
+    (add-hook 'c-mode-common-hook #'clang-format+-mode))
+#+END_SRC
+** python
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (use-package elpy
+    :ensure t
+    :defer t
+    :init
+    (advice-add 'python-mode :before 'elpy-enable))
+#+END_SRC
+** latex
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (use-package tex
+    :ensure auctex)
+
+  (add-hook 'LaTeX-mode-hook 
+            (lambda()
+               (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+               (setq TeX-command-default "XeLaTeX")))
+#+END_SRC
+** misc
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (use-package julia-mode)
+
+  (use-package markdown-mode
+    :ensure t
+    :commands (markdown-mode gfm-mode)
+    :mode (("README\\.md\\'" . gfm-mode)
+           ("\\.md\\'" . markdown-mode)
+           ("\\.markdown\\'" . markdown-mode))
+    :init (setq markdown-command "multimarkdown"))
+
+  (use-package yaml-mode
+    :config
+    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+    (add-hook 'yaml-mode-hook
+              '(lambda ()
+                 (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+    )
+#+END_SRC
 * org
 ** basic
 #+BEGIN_SRC emacs-lisp :tangle yes 
@@ -152,4 +205,34 @@
     (setq deft-extensions '("txt" "tex" "org")
           deft-default-extension "org")
     (setq deft-directory "~/Nutstore Files/Nutstore/org"))
+
+
+  (use-package org-roam
+    :ensure t
+    :hook
+    (after-init . org-roam-mode)
+    :custom
+    (org-roam-directory "~/Nutstore Files/Nutstore/org")
+    :bind (:map org-roam-mode-map
+                (("C-c n l" . org-roam)
+                 ("C-c n f" . org-roam-find-file)
+                 ("C-c n g" . org-roam-graph))
+                :map org-mode-map
+                (("C-c n i" . org-roam-insert))
+                (("C-c n I" . org-roam-insert-immediate))))
+
+  (use-package org-roam-server
+    :ensure t
+    :config
+    (setq org-roam-server-host "127.0.0.1"
+          org-roam-server-port 8080
+          org-roam-server-authenticate nil
+          org-roam-server-export-inline-images t
+          org-roam-server-serve-files nil
+          org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+          org-roam-server-network-poll t
+          org-roam-server-network-arrows nil
+          org-roam-server-network-label-truncate t
+          org-roam-server-network-label-truncate-length 60
+          org-roam-server-network-label-wrap-length 20))
 #+END_SRC
