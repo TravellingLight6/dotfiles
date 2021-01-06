@@ -72,6 +72,11 @@
   (use-package hungry-delete
     :config
     (global-hungry-delete-mode))
+
+  (use-package exec-path-from-shell
+    :config
+    (when (memq window-system '(mac ns x))
+      (exec-path-from-shell-initialize)))
 #+END_SRC
 * lang
 ** c++
@@ -94,7 +99,16 @@
     :ensure t
     :defer t
     :init
-    (advice-add 'python-mode :before 'elpy-enable))
+    (advice-add 'python-mode :before 'elpy-enable)
+    :config
+    (setq python-shell-interpreter "python3"
+          python-shell-interpreter-args "-i")
+    (setq elpy-rpc-python-command "python3"))
+
+
+  (use-package yapfify
+    :config
+    (add-hook 'python-mode-hook 'yapf-mode))
 #+END_SRC
 ** latex
 #+BEGIN_SRC emacs-lisp :tangle yes
