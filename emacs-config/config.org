@@ -161,8 +161,11 @@
 ** exporting
 #+BEGIN_SRC emacs-lisp :tangle yes 
   (setq org-latex-pdf-process 
-	'("xelatex -interaction nonstopmode %f"
-	  "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+        '("xelatex -interaction nonstopmode %f"
+          "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+  ;; (setq org-html-htmlize-output-type 'inline-css) ;; default
+  (setq org-html-htmlize-output-type 'css)
+  (use-package htmlize)
 #+END_SRC
 ** getting things done
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -203,7 +206,7 @@
           deft-use-filename-as-title t
           deft-extensions '("md" "org"))
     (global-set-key (kbd "C-c d") 'deft)
-    (global-set-key (kbd "C-x C-g") 'deft-find-file)
+    (global-set-key (kbd "C-x f") 'deft-find-file)
     )
 #+END_SRC
 * customization
