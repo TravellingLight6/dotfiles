@@ -1,4 +1,5 @@
 /emacs-config/auto*
+/emacs-config/projectile*
 /emacs-config/elpy
 /emacs-config/elpa
 /emacs-config/config.el

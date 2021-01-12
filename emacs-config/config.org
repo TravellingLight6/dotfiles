@@ -84,6 +84,11 @@
     :config
     (when (memq window-system '(mac ns x))
       (exec-path-from-shell-initialize)))
+
+  (use-package projectile
+    :config
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map))
 #+END_SRC
 * lang
 ** c++
