@@ -183,6 +183,11 @@
            :with-toc nil
            :recursive t
            :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
+           :html-head-extra "<div class=\"topnav\">
+           <a href=\"https://travellinglight6.github.io\">HOME</a>
+           <a href=\"https://travellinglight6.github.io/blog/\">BLOG</a>
+           <a href=\"https://travellinglight6.github.io/doc/\">DOC</a>
+           </div>"
            :html-preamble nil)
 
           ("static"
@@ -199,8 +204,8 @@
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c a") 'org-agenda)
 
-  (setq org-directory "~/Nutstore Files/Nutstore/org"
-        org-agenda-files `("~/Nutstore Files/Nutstore/org")
+  (setq org-directory "~/org"
+        org-agenda-files `("~/org")
         org-default-notes-file (concat org-directory "/notes.org")
         org-default-todo-file (concat org-directory "/todos.org"))
 
