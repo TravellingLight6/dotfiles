@@ -11,8 +11,13 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   (global-set-key (kbd "<f6>") 'revert-buffer)
   (use-package zenburn-theme
+    :ensure monokai-theme
+    :ensure color-theme-sanityinc-tomorrow
+    :ensure solarized-theme
+    :ensure dracula-theme
+    :ensure spacemacs-theme
     :config
-    (load-theme 'zenburn t))
+    (load-theme 'sanityinc-tomorrow-day t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
@@ -52,6 +57,7 @@
     (global-set-key (kbd "C-x C-r") 'counsel-recentf)
     (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
     (global-set-key (kbd "C-x C-b") 'counsel-bookmark)
+    (global-set-key (kbd "C-x C-t") 'counsel-load-theme)
     )
 #+END_SRC
 * programming
@@ -89,6 +95,19 @@
     :config
     (projectile-mode +1)
     (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map))
+
+  (use-package shell-pop
+    :config
+    (custom-set-variables
+     '(shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
+     '(shell-pop-term-shell "/usr/bin/zsh")
+     '(shell-pop-universal-key "C-t")
+     '(shell-pop-window-size 30)
+     '(shell-pop-full-span t)
+     '(shell-pop-window-position "bottom")
+     '(shell-pop-autocd-to-working-dir t)
+     '(shell-pop-restore-window-configuration t)
+     '(shell-pop-cleanup-buffer-at-process-exit t)))
 #+END_SRC
 * lang
 ** c++
