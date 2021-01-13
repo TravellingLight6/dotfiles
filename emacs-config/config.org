@@ -220,6 +220,8 @@
 #+END_SRC
 ** getting things done
 #+BEGIN_SRC emacs-lisp :tangle yes
+  (require 'org-protocol)
+  (server-start)
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c a") 'org-agenda)
 
@@ -229,10 +231,14 @@
         org-default-todo-file (concat org-directory "/todos.org"))
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline org-default-todo-file "Tasks")
+        '(("t" "Todo" entry (file org-default-todo-file)
            "* TODO %?\nEntered on %U")
           ("n" "Note" entry (file+headline org-default-notes-file "INBOX")
            "* %?\nEntered on %U")
+          ("l" "Link" entry (file+headline org-default-notes-file "Links")
+           "* %a %^g")
+          ("w" "web task" entry (file org-default-todo-file)
+           "* TODO %a\nEntered on %U")
           ))
 
   (setq org-todo-keywords
