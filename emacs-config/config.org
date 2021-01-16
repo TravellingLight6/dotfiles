@@ -17,7 +17,7 @@
     :ensure dracula-theme
     :ensure spacemacs-theme
     :config
-    (load-theme 'sanityinc-tomorrow-day t))
+    (load-theme 'sanityinc-tomorrow-blue t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
