@@ -13,12 +13,16 @@
   (global-linum-mode t)
   (use-package zenburn-theme
     :ensure monokai-theme
+    :ensure vscdark-theme
+    :ensure ubuntu-theme
     :ensure color-theme-sanityinc-tomorrow
     :ensure solarized-theme
     :ensure dracula-theme
     :ensure spacemacs-theme
+    :ensure github-theme
+    :ensure atom-one-dark-theme
     :config
-    (load-theme 'sanityinc-tomorrow-day t))
+    (load-theme 'github t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
