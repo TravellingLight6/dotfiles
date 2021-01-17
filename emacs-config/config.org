@@ -18,7 +18,7 @@
     :ensure dracula-theme
     :ensure spacemacs-theme
     :config
-    (load-theme 'monokai t))
+    (load-theme 'zenburn t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
@@ -233,7 +233,7 @@
 
   (setq org-capture-templates
         '(("t" "Todo" entry (file org-default-todo-file)
-           "* TODO %^g %?\nEntered on %U")
+           "* TODO %? %^g\nEntered on %U")
           ("n" "Note" entry (file+headline org-default-notes-file "INBOX")
            "* %? %^g\nEntered on %U")
           ("l" "Link" entry (file+headline org-default-notes-file "Links")
