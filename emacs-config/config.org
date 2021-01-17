@@ -22,7 +22,7 @@
     :ensure github-theme
     :ensure atom-one-dark-theme
     :config
-    (load-theme 'github t))
+    (load-theme 'sanityinc-tomorrow-night t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
@@ -196,32 +196,6 @@
   ;; (setq org-html-htmlize-output-type 'inline-css) ;; default
   (setq org-html-htmlize-output-type 'css)
   (setq org-html-postamble nil)
-
-  (setq org-publish-project-alist
-        '(("org"
-           :base-directory "~/codes/TravellingLight6.github.io/org"
-           :base-extension "org"
-           :publishing-directory "~/codes/TravellingLight6.github.io"
-           :publishing-function org-html-publish-to-html
-           :section-numbers nil
-           :with-toc nil
-           :recursive t
-           :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
-           :html-head-extra "<div class=\"topnav\">
-           <a href=\"https://travellinglight6.github.io\">HOME</a>
-           <a href=\"https://travellinglight6.github.io/blog/\">BLOG</a>
-           <a href=\"https://travellinglight6.github.io/doc/\">DOC</a>
-           </div>"
-           :html-preamble nil)
-
-          ("static"
-           :base-directory "~/codes/TravellingLight6.github.io/org"
-           :base-extension "jpg\\|gif\\|png"
-           :publishing-directory "~/codes/TravellingLight6.github.io"
-           :publishing-function org-publish-attachment
-           :recursive t)
-
-          ("website" :components ("org" "static"))))
 #+END_SRC
 ** getting things done
 #+BEGIN_SRC emacs-lisp :tangle yes
