@@ -1,6 +1,5 @@
 * basic
 #+BEGIN_SRC emacs-lisp :tangle yes
-  (set-language-environment "UTF-8")
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
@@ -12,17 +11,10 @@
   (global-set-key (kbd "<f6>") 'revert-buffer)
   (global-linum-mode t)
   (use-package zenburn-theme
-    :ensure monokai-theme
-    :ensure vscdark-theme
-    :ensure ubuntu-theme
     :ensure color-theme-sanityinc-tomorrow
-    :ensure solarized-theme
-    :ensure dracula-theme
-    :ensure spacemacs-theme
-    :ensure github-theme
-    :ensure atom-one-dark-theme
+    :ensure doom-themes
     :config
-    (load-theme 'sanityinc-tomorrow-night t))
+    (load-theme 'doom-material t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
