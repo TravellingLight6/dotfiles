@@ -10,9 +10,7 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   (global-set-key (kbd "<f6>") 'revert-buffer)
   (global-linum-mode t)
-  (use-package zenburn-theme
-    :ensure color-theme-sanityinc-tomorrow
-    :ensure doom-themes
+  (use-package doom-themes
     :config
     (load-theme 'doom-material t))
 #+END_SRC
@@ -21,18 +19,10 @@
   (use-package which-key
     :config
     (which-key-mode 1))
-  (use-package cnfonts
-    :config
-    (cnfonts-enable))
 
   (use-package expand-region
     :config
     (global-set-key (kbd "C-=") 'er/expand-region))
-
-  (use-package neotree
-    :config
-    (global-set-key (kbd "<f8>") 'neotree-show)
-    (global-set-key (kbd "<f9>") 'neotree-hide))
 #+END_SRC
 * evil
 #+BEGIN_SRC emacs-lisp :tangle yes 
@@ -194,46 +184,23 @@
   (setq org-html-htmlize-output-type 'css)
   (setq org-html-postamble nil)
 #+END_SRC
-** getting things done
+** gtd
 #+BEGIN_SRC emacs-lisp :tangle yes
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c a") 'org-agenda)
-
-  (setq org-directory "~/Nutstore Files/Nutstore/org"
-        org-agenda-files `("~/Nutstore Files/Nutstore/org")
-        org-default-notes-file (concat org-directory "/notes.org")
-        org-default-journal-file (concat org-directory "/journal.org")
-        org-default-todo-file (concat org-directory "/todos.org"))
-
-  (setq org-log-into-drawer t
-        org-agenda-show-future-repeats nil)
-
   (setq org-capture-templates
-        '(("t" "Todo" entry (file org-default-todo-file)
-           "* TODO %? %^g\nEntered on %U")
-          ("j" "Journal" entry (file+olp+datetree org-default-journal-file)
-           "* %U%?")
-          ("n" "Note" entry (file+headline org-default-notes-file "INBOX")
-           "* %? %^g\nEntered on %U")
-          ))
-
+        '(("t" "Todo" entry (file+headline "~/Nutstore Files/Sync/org/todos" "Tasks")
+           "* TODO %?\n  %a")
+          ("j" "Journal" entry (file+olp+datetree "~/Nutstore Files/Sync/org/journal.org")
+           "* %?\nEntered on %U")))
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "INPROGRESS(i)" "|" "DONE(d!)" "CANCELED(c@)")))
-
-  (setq org-todo-keyword-faces
-        '(("TODO" . org-warning) ("INPROGRESS" . "yellow") ("DONE" . "green")
-          ("CANCELED" . (:foreground "blue" :weight bold))))
-
-  (setq org-refile-targets '((nil :maxlevel . 9)
-                             (org-agenda-files :maxlevel . 9)))
-  (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
-  (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
+        '((sequence "TODO(t)" "|" "DONE(d)")))
 #+END_SRC
 ** noting
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package deft
     :config
-    (setq deft-directory org-directory
+    (setq deft-directory "~/Nutstore Files/Sync/org"
           deft-recursive t
           deft-default-extension "org"
           deft-use-filename-as-title t
