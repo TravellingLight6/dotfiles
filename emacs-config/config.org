@@ -23,6 +23,10 @@
   (use-package expand-region
     :config
     (global-set-key (kbd "C-=") 'er/expand-region))
+
+  (use-package cnfonts
+    :config
+    (cnfonts-enable))
 #+END_SRC
 * evil
 #+BEGIN_SRC emacs-lisp :tangle yes 
@@ -189,18 +193,20 @@
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c a") 'org-agenda)
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/Nutstore Files/Sync/org/todos" "Tasks")
+        '(("t" "Todo" entry (file+headline "~/Nutstore Files/Nutstore/org/todos.org" "Tasks")
            "* TODO %?\n  %a")
-          ("j" "Journal" entry (file+olp+datetree "~/Nutstore Files/Sync/org/journal.org")
+          ("j" "Journal" entry (file+olp+datetree "~/Nutstore Files/Nutstore/org/journal.org")
            "* %?\nEntered on %U")))
   (setq org-todo-keywords
         '((sequence "TODO(t)" "|" "DONE(d)")))
+
+  (setq org-agenda-files `("~/Nutstore Files/Nutstore/org"))
 #+END_SRC
 ** noting
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package deft
     :config
-    (setq deft-directory "~/Nutstore Files/Sync/org"
+    (setq deft-directory "~/Nutstore Files/Nutstore/org"
           deft-recursive t
           deft-default-extension "org"
           deft-use-filename-as-title t
