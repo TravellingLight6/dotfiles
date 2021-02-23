@@ -190,16 +190,9 @@
 ** gtd
 #+BEGIN_SRC emacs-lisp :tangle yes
   (global-set-key (kbd "C-c c") 'org-capture)
-  (global-set-key (kbd "C-c a") 'org-agenda)
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/Nutstore Files/Nutstore/org/todos.org" "Tasks")
-           "* TODO %?\n  %a")
-          ("j" "Journal" entry (file+olp+datetree "~/Nutstore Files/Nutstore/org/journal.org")
+        '(("j" "Journal" entry (file+olp+datetree "~/Nutstore Files/Nutstore/org/journal.org")
            "* %?\nEntered on %U")))
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "|" "DONE(d)")))
-
-  (setq org-agenda-files `("~/Nutstore Files/Nutstore/org"))
 #+END_SRC
 ** noting
 #+BEGIN_SRC emacs-lisp :tangle yes
