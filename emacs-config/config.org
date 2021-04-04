@@ -187,26 +187,6 @@
   (setq org-html-htmlize-output-type 'css)
   (setq org-html-postamble nil)
 #+END_SRC
-** gtd
-#+BEGIN_SRC emacs-lisp :tangle yes
-  (global-set-key (kbd "C-c c") 'org-capture)
-  (setq org-capture-templates
-        '(("j" "Journal" entry (file+olp+datetree "~/Nutstore Files/Nutstore/org/journal.org")
-           "* %?\nEntered on %U")))
-#+END_SRC
-** noting
-#+BEGIN_SRC emacs-lisp :tangle yes
-  (use-package deft
-    :config
-    (setq deft-directory "~/Nutstore Files/Nutstore/org"
-          deft-recursive t
-          deft-default-extension "org"
-          deft-use-filename-as-title t
-          deft-extensions '("md" "org"))
-    (global-set-key (kbd "C-c d") 'deft)
-    (global-set-key (kbd "C-c f") 'deft-find-file)
-    )
-#+END_SRC
 * customization
 #+BEGIN_SRC emacs-lisp :tangle yes
   (defun ql/reload-config ()
