@@ -95,7 +95,7 @@
     :config
     (custom-set-variables
      '(shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
-     '(shell-pop-term-shell "/bin/bash")
+     '(shell-pop-term-shell "/usr/bin/zsh")
      '(shell-pop-universal-key "C-c t")
      '(shell-pop-window-size 30)
      '(shell-pop-full-span t)
@@ -185,9 +185,17 @@
 #+END_SRC
 ** exporting
 #+BEGIN_SRC emacs-lisp :tangle yes 
-  (setq org-latex-pdf-process 
-        '("xelatex -interaction nonstopmode %f"
-          "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+  (use-package org-ref
+    :config
+    ;; (setq org-latex-pdf-process 
+    ;; 	'("xelatex -interaction nonstopmode %f"
+    ;; 	  "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+    (setq org-latex-pdf-process
+          '("xelatex -interaction nonstopmode -output-directory %o %f"
+            "bibtex %b"
+            "xelatex -interaction nonstopmode -output-directory %o %f"
+            "xelatex -interaction nonstopmode -output-directory %o %f"))
+    )
 
   (use-package htmlize)
   ;; (setq org-html-htmlize-output-type 'inline-css) ;; default

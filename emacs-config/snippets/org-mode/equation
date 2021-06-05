@@ -1,9 +1,7 @@
 # -*- mode: snippet -*-
-# name:split 
-# key: sp
+# name:equation 
+# key: eq
 # --
 \begin{equation}
-  \begin{split}
-  $0 
-  \end{split}
+  $0
 \end{equation}

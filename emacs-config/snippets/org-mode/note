@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: note
+# key: note_
+# --
+#+TITLE:${1:title}
+#+AUTHOR:Lin Qiu
+#+EMAIL:qiulin@ihep.ac.cn
+#+DATE:${2:year}/${3:month}/${4:day}
+#+LATEX_HEADER:\usepackage{ctex}
+#+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=black}
