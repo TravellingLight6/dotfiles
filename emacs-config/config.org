@@ -190,17 +190,24 @@
     ;; (setq org-latex-pdf-process 
     ;; 	'("xelatex -interaction nonstopmode %f"
     ;; 	  "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+    ;; (setq org-latex-pdf-process
+    ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
+    ;;         "bibtex %b"
+    ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
+    ;;         "xelatex -interaction nonstopmode -output-directory %o %f"))
+
     (setq org-latex-pdf-process
-          '("xelatex -interaction nonstopmode -output-directory %o %f"
+          '("pdflatex -interaction nonstopmode -output-directory %o %f"
             "bibtex %b"
-            "xelatex -interaction nonstopmode -output-directory %o %f"
-            "xelatex -interaction nonstopmode -output-directory %o %f"))
+            "pdflatex -interaction nonstopmode -output-directory %o %f"
+            "pdflatex -interaction nonstopmode -output-directory %o %f"))
     )
 
   (use-package htmlize)
   ;; (setq org-html-htmlize-output-type 'inline-css) ;; default
   (setq org-html-htmlize-output-type 'css)
   (setq org-html-postamble nil)
+  (setq org-latex-caption-above nil)
 #+END_SRC
 * customization
 #+BEGIN_SRC emacs-lisp :tangle yes
