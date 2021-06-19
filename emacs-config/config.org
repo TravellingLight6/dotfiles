@@ -190,17 +190,17 @@
     ;; (setq org-latex-pdf-process 
     ;; 	'("xelatex -interaction nonstopmode %f"
     ;; 	  "xelatex -interaction nonstopmode %f")) ;; for multiple passes
-    ;; (setq org-latex-pdf-process
-    ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
-    ;;         "bibtex %b"
-    ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
-    ;;         "xelatex -interaction nonstopmode -output-directory %o %f"))
-
     (setq org-latex-pdf-process
-          '("pdflatex -interaction nonstopmode -output-directory %o %f"
+          '("xelatex -interaction nonstopmode -output-directory %o %f"
             "bibtex %b"
-            "pdflatex -interaction nonstopmode -output-directory %o %f"
-            "pdflatex -interaction nonstopmode -output-directory %o %f"))
+            "xelatex -interaction nonstopmode -output-directory %o %f"
+            "xelatex -interaction nonstopmode -output-directory %o %f"))
+
+    ;; (setq org-latex-pdf-process
+    ;;       '("pdflatex -interaction nonstopmode -output-directory %o %f"
+    ;;         "bibtex %b"
+    ;;         "pdflatex -interaction nonstopmode -output-directory %o %f"
+    ;;         "pdflatex -interaction nonstopmode -output-directory %o %f"))
     )
 
   (use-package htmlize)
