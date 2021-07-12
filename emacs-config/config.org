@@ -11,8 +11,18 @@
   (global-set-key (kbd "<f6>") 'revert-buffer)
   (global-linum-mode t)
   (use-package doom-themes
+    :ensure zenburn-theme
     :config
-    (load-theme 'doom-material t))
+    ;; use variable-pitch fonts for some headings and titles
+    (setq zenburn-use-variable-pitch t)
+
+    ;; scale headings in org-mode
+    (setq zenburn-scale-org-headlines t)
+
+    ;; scale headings in outline-mode
+    (setq zenburn-scale-outline-headlines t)
+
+    (load-theme 'zenburn t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
