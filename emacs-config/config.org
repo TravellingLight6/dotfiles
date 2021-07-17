@@ -12,17 +12,11 @@
   (global-linum-mode t)
   (use-package doom-themes
     :ensure zenburn-theme
+    :ensure spacemacs-theme 
+    :ensure gruvbox-theme
+    :ensure color-theme-sanityinc-tomorrow
     :config
-    ;; use variable-pitch fonts for some headings and titles
-    (setq zenburn-use-variable-pitch t)
-
-    ;; scale headings in org-mode
-    (setq zenburn-scale-org-headlines t)
-
-    ;; scale headings in outline-mode
-    (setq zenburn-scale-outline-headlines t)
-
-    (load-theme 'zenburn t))
+    (load-theme 'deeper-blue t))
 #+END_SRC
 * editors
 #+BEGIN_SRC emacs-lisp :tangle yes 
